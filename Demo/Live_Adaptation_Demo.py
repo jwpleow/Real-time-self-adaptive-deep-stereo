@@ -19,14 +19,14 @@ if __name__=='__main__':
     parser.add_argument("--mode",help="online adaptation mode: NONE - perform only inference, FULL - full online backprop, MAD - backprop only on portions of the network", choices=['NONE','FULL','MAD'], default='NONE')
     parser.add_argument("--lr", help="value for learning rate",default=0.0001, type=float)
     parser.add_argument("--blockConfig",help="path to the block_config json file",default='../block_config/MadNet_full.json')
-    parser.add_argument("--imageShape", help='two int, reshape input images to this shape [height,width], -1 to disable', nargs='+', type=int, default=[480,640])
-    parser.add_argument("--cropShape", help='two int, crop input images to this shape [height,width], -1 to disable', nargs='+', type=int, default=[320,512]), 
+    parser.add_argument("--imageShape", help='two int, reshape input images to this shape [height,width], -1 to disable', nargs='+', type=int, default=[400,640])
+    parser.add_argument("--cropShape", help='two int, crop input images to this shape [height,width], -1 to disable', nargs='+', type=int, default=[160,256]), 
     parser.add_argument("--SSIMTh",help="reset network to initial configuration if loss is above this value",type=float,default=0.5)
     parser.add_argument("--cameraConfig", help="path to a configuration file for the camera", default='/home/alessio/code/Real-time-self-adaptive-deep-stereo/Demo/configuration.json')
-    parser.add_argument("--cameraName", help="name of the camera grabber to build", default="ZED_Mini", choices=grabber.get_available_camera())
+    parser.add_argument("--cameraName", help="name of the camera grabber to build", default="Arducam", choices=grabber.get_available_camera())
     args = parser.parse_args()
 
-    assert(os.path.exists(args.cameraConfig))
+    # assert(os.path.exists(args.cameraConfig))
     assert(len(args.imageShape)==2)
 
     #setup shared queue for readed frame
