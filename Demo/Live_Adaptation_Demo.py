@@ -18,7 +18,7 @@ if __name__=='__main__':
     parser.add_argument("--weights",help="path to the initial weights for the disparity estimation network",default=None)
     parser.add_argument("--mode",help="online adaptation mode: NONE - perform only inference, FULL - full online backprop, MAD - backprop only on portions of the network", choices=['NONE','FULL','MAD'], default='NONE')
     parser.add_argument("--lr", help="value for learning rate",default=0.0001, type=float)
-    parser.add_argument("--blockConfig",help="path to the block_config json file",default='../block_config/MadNet_full.json')
+    parser.add_argument("--blockConfig",help="path to the block_config json file",default='../block_config/MadNet_piramid_only.json')
     parser.add_argument("--imageShape", help='two int, reshape input images to this shape [height,width], -1 to disable', nargs='+', type=int, default=[400,640])
     parser.add_argument("--cropShape", help='two int, crop input images to this shape [height,width], -1 to disable', nargs='+', type=int, default=[160,256]), 
     parser.add_argument("--SSIMTh",help="reset network to initial configuration if loss is above this value",type=float,default=0.5)
